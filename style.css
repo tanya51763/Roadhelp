@@ -1,0 +1,72 @@
+/* ================= ШРИФТЫ =================
+   Montserrat: 500 (Medium), 600 (SemiBold), 800 (ExtraBold).
+   Для работы офлайн скачайте шрифт (fonts.google.com/specimen/Montserrat)
+   и положите файлы в папку fonts/ с именами ниже. */
+@font-face{font-family:'Montserrat';font-weight:500;font-style:normal;font-display:swap;
+  src:local('Montserrat Medium'),local('Montserrat-Medium'),url('../fonts/Montserrat-Medium.woff2') format('woff2'),url('../fonts/Montserrat-Medium.ttf') format('truetype')}
+@font-face{font-family:'Montserrat';font-weight:600;font-style:normal;font-display:swap;
+  src:local('Montserrat SemiBold'),local('Montserrat-SemiBold'),url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),url('../fonts/Montserrat-SemiBold.ttf') format('truetype')}
+@font-face{font-family:'Montserrat';font-weight:800;font-style:normal;font-display:swap;
+  src:local('Montserrat ExtraBold'),local('Montserrat-ExtraBold'),url('../fonts/Montserrat-ExtraBold.woff2') format('woff2'),url('../fonts/Montserrat-ExtraBold.ttf') format('truetype')}
+
+/* ================= ЦВЕТА ================= */
+:root{
+  --navy:#142040;      /* фон обложки и цвет текста содержания */
+  --white:#FFFFFF;
+  --teal:#099F97;      /* слово Help и «водителя-новичка» (взято из логотипа) */
+  --yellow:#F2C230;    /* жёлтая разметка в логотипе */
+
+  /* маркеры разделов */
+  --c1:#A8C5E8; --c2:#A8E0DC; --c3:#B8C4D4; --c4:#A8D8F0;
+  --c5:#F0B8B8; --c6:#F5E0A8; --c7:#F0B7EF; --c8:#B8E0B8;
+  --c9:#C4C0E8; --c10:#F5C8A8; --c11:#E0B8C0;
+
+  --font:'Montserrat','Segoe UI',Arial,sans-serif;
+  --s:1; /* масштаб страниц — выставляет js/main.js */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:#E7EAF2;color:var(--navy);padding:16px 0 40px}
+
+/* ================= КНИГА ================= */
+.spread{display:flex;justify-content:center;margin:0 auto 22px;flex-wrap:wrap;gap:0}
+.wrap{width:calc(var(--w) * 1px * var(--s));height:calc(960px * var(--s));position:relative;flex:none}
+.sheet{position:absolute;left:0;top:0;width:calc(var(--w) * 1px);height:960px;
+  transform:scale(var(--s));transform-origin:0 0;background:var(--white);overflow:hidden}
+.wrap:first-child .sheet{border-right:1px solid #cfd5e3}
+.spread .wrap{box-shadow:0 8px 28px rgba(20,32,64,.12)}
+.sheet.contents{--w:640}
+
+/* ================= ОБЛОЖКА (координаты из макета) ================= */
+.cover{background:var(--navy);color:var(--white)}
+.cover > *{position:absolute}
+.cover .brand{left:39.5px;top:29.5px;width:389px;height:91px;
+  font-weight:800;font-size:75px;line-height:100%;letter-spacing:0;white-space:nowrap}
+.cover .brand span{color:var(--teal)}
+.cover h1{left:39.5px;top:257.5px;width:492px;height:118px;
+  font-weight:800;font-size:48px;line-height:100%;letter-spacing:0}
+.cover h1 em{font-style:normal;color:var(--teal)}
+.cover .inside{left:46.5px;top:428px;width:314px;min-height:169px;
+  font-weight:500;font-size:16px;line-height:115%}
+.cover .inside ul{margin-top:6px;padding-left:22px}
+.cover .inside li{margin-bottom:6px}
+.cover .mark{left:277.5px;top:631px;width:284px;height:285px}
+.cover .dots{background-image:radial-gradient(circle,#fff 4px,transparent 4.6px);background-size:24px 24px}
+.cover .dots.tr{right:34px;top:44px;width:48px;height:96px}
+.cover .dots.bl{left:40px;bottom:46px;width:96px;height:48px}
+
+/* ================= СОДЕРЖАНИЕ ================= */
+.ctitle{position:absolute;left:0;right:0;top:30px;height:58px;text-align:center;
+  font-weight:800;font-size:36px;line-height:58px;letter-spacing:0;color:var(--navy)}
+.list{position:absolute;left:40px;right:40px;top:101px;color:var(--navy)}
+.bar{font-weight:600;font-size:20px;line-height:100%;padding:0 12px;height:30px;display:flex;align-items:center;
+  background:var(--c);margin:22px 0 14px}
+.bar:first-child{margin-top:0}
+.bar.none{background:none;padding-left:0}
+.row{display:flex;align-items:baseline;gap:6px;font-weight:500;font-size:16px;line-height:100%;letter-spacing:0;
+  height:21px}
+.row i{flex:1;border-bottom:2px dotted var(--navy);opacity:.55;transform:translateY(-3px);min-width:16px}
+.row b{font-weight:500;white-space:nowrap}
+.row .t{white-space:nowrap}
+.row.long .t{white-space:normal}
+
+@media print{body{background:#fff;padding:0}.spread{break-inside:avoid;box-shadow:none}}
